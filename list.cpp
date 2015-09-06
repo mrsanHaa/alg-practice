@@ -41,7 +41,30 @@ ListNode * ReverseList(ListNode *pHead)
 	return pHead;
 }
 
+ListNode * GetKthNode(ListNode *pHead,unsigned int k)
+{
+	if(k==0 || pHead ==NULL)
+		return NULL;
+	
+	ListNode *pAhead = pHead;
+	ListNode *pBehind = pHead;
 
+	while(k>1 && pAhead)
+	{
+		pAhead = pAhead->m_pNext;
+		--k;
+	}
+	if(pAhead ==NULL)
+		return NULL;
+	while(pAhead)
+	{
+		pAhead = pAhead->m_pNext;
+		pBehind = pBehind->m_pNext;
+	}
+
+	return pBehind;
+
+}
 
 int main(int argc,char *argv[])
 {
